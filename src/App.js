@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Message} from './Message';
 import {Input} from './Input';
-import {useFakeMessage} from './useFakeMessage';
+import {useFakeConvo} from './useFakeConvo';
 
 const initialMessages = [
   {id: 1, content: 'Hello there!', from: 'me'},
@@ -13,10 +13,11 @@ export const App = () => {
   let [messages, setMessages] = useState(initialMessages);
   let [currentMessage, setCurrentMessage] = useState('');
 
-  useFakeMessage({
-    setMessages,
-    message: 'Hello from another side',
-  });
+  // useFakeMessage({
+  //   setMessages,
+  //   message: 'Hello from another side',
+  // });
+  useFakeConvo(setMessages);
 
   return (
     <div style={styles.wrapper}>
