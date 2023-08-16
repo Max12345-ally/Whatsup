@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Message} from './Message';
 import {Input} from './Input';
 import {useFakeConvo} from './useFakeConvo';
+import {useScrollToBottom} from './useScrollToBottom';
 
 const initialMessages = [
   {id: 1, content: 'Hello there!', from: 'me'},
@@ -19,9 +20,11 @@ export const App = () => {
   // });
   useFakeConvo(setMessages);
 
+  let scrollRef = useScrollToBottom(messages);
+
   return (
     <div style={styles.wrapper}>
-      <div style={styles.container}>
+      <div style={styles.container} ref={(ref) => (scrollRef.current = ref)}>
         {messages.map((message) => (
           <Message key={message.id} message={message} />
         ))}
