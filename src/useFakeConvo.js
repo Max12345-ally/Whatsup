@@ -1,35 +1,35 @@
 import {useFakeMessage} from './useFakeMessage';
 
-export const useFakeConvo = (setMessages) => {
-  useFakeMessage({setMessages, message: 'That is cool!', timeout: 1000});
+export const useFakeConvo = (dispatch) => {
+  useFakeMessage({dispatch, message: 'That is cool!', timeout: 1000});
   useFakeMessage({
-    setMessages,
+    dispatch,
     message: 'I know right?',
     from: 'me',
     timeout: 3000,
   });
 
   useFakeMessage({
-    setMessages,
+    dispatch,
     message: 'So what should we do now....',
   });
   useFakeMessage({
-    setMessages,
-    message: 'So what should we do now....',
-  });
-
-  useFakeMessage({
-    setMessages,
+    dispatch,
     message: 'So what should we do now....',
   });
 
   useFakeMessage({
-    setMessages,
+    dispatch,
     message: 'So what should we do now....',
   });
 
   useFakeMessage({
-    setMessages,
+    dispatch,
+    message: 'So what should we do now....',
+  });
+
+  useFakeMessage({
+    dispatch,
     message: 'I guess we should test scroll positioning',
     from: 'me',
     timeout: 9000,
