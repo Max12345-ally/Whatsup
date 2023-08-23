@@ -4,6 +4,7 @@ import {Input} from './Input';
 import {useFakeConvo} from './useFakeConvo';
 import {useScrollToBottom} from './useScrollToBottom';
 import {useChatReducer} from './chatReducer';
+import {ChatProvider} from './useChat';
 
 export const App = () => {
   let [state, dispatch] = useChatReducer();
@@ -29,6 +30,14 @@ export const App = () => {
         onEnter={(message) => dispatch({type: 'addMessage', message})}
       />
     </div>
+  );
+};
+
+export const AppContainer = () => {
+  return (
+    <ChatProvider>
+      <App />
+    </ChatProvider>
   );
 };
 
