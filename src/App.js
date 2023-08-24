@@ -1,21 +1,21 @@
-import React, {useState} from 'react';
-import {Message} from './Message';
+import React from 'react';
 import {Input} from './Input';
+import {Message} from './Message';
+import {ChatProvider} from './useChat';
 import {useFakeConvo} from './useFakeConvo';
 import {useScrollToBottom} from './useScrollToBottom';
-import {useChatReducer} from './chatReducer';
-import {ChatProvider} from './useChat';
+import {useChat} from './useChat';
 
 export const App = () => {
-  let [state, dispatch] = useChatReducer();
+  let {state} = useChat();
 
   // useFakeMessage({
   //   setMessages,
-  //   message: 'Hello from another side',
+  //   message: 'Hello from another side',P
   // });
-  useFakeConvo(dispatch);
+  useFakeConvo();
 
-  let scrollRef = useScrollToBottom(state.messages);
+  let scrollRef = useScrollToBottom();
 
   return (
     <div style={styles.wrapper}>
@@ -24,11 +24,7 @@ export const App = () => {
           <Message key={message.id} message={message} />
         ))}
       </div>
-      <Input
-        value={state.currentMessage}
-        onChange={(message) => dispatch({type: 'setCurrentMessage', message})}
-        onEnter={(message) => dispatch({type: 'addMessage', message})}
-      />
+      <Input />
     </div>
   );
 };
