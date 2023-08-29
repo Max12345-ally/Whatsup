@@ -1,7 +1,7 @@
 import React from 'react';
 import {useChat} from './useChat';
 
-export const Input = () => {
+export const Input = ({onChange, onEnter}) => {
   let {state, dispatch} = useChat();
 
   return (
