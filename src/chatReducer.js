@@ -14,7 +14,7 @@ const reducer = (state, action) => {
     case 'addMessage':
       return {
         ...state,
-        currentMessage: '',
+        highlightedMessageId: action.from === 'me' ? '' : state.currentMessage,
         messages: [
           ...state.messages,
           {
