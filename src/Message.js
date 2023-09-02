@@ -1,21 +1,25 @@
 import React from 'react';
 import {useChat} from './useChat';
 
-export const Message = ({message}) => {
+export const ChatMessage = ({message}) => {
   let {state, dispatch} = useChat();
 
   return (
+    <Message
+      message={message}
+      isHighlighted={message.id === state.highlightedMessageId}
+      onQuoteClicked={() => dispatch({type: 'quoteMessage', id: message.id})}
+    />
+  );
+};
+
+export const Message = ({message, isHighlighted, onQuoteClicked}) => {
+  return (
     <div style={message.from === 'me' ? styles.sent : styles.received}>
-      <div
-        style={
-          message.id === state.highlightedMessageId ? {color: 'red'} : undefined
-        }
-      >
+      <div style={isHighlighted ? {color: 'red'} : undefined}>
         {message.content}
       </div>
-      <div onClick={() => dispatch({type: 'quoteMessage', id: message.id})}>
-        Quote
-      </div>
+      <div onClick={onQuoteClicked}>Quote</div>
     </div>
   );
 };

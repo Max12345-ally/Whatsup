@@ -1,6 +1,6 @@
 import React from 'react';
 import {Input} from './Input';
-import {Message} from './Message';
+import {ChatMessage} from './Message';
 import {ChatProvider} from './useChat';
 import {useFakeConvo} from './useFakeConvo';
 import {useScrollToBottom} from './useScrollToBottom';
@@ -21,7 +21,7 @@ export const App = () => {
     <div style={styles.wrapper}>
       <div style={styles.container} ref={(ref) => (scrollRef.current = ref)}>
         {state.messages.map((message) => (
-          <Message key={message.id} message={message} />
+          <ChatMessage key={message.id} message={message} />
         ))}
       </div>
       <Input />
