@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input} from './Input';
+import {ChatInput} from './Input';
 import {ChatMessage} from './Message';
 import {ChatProvider} from './useChat';
 import {useFakeConvo} from './useFakeConvo';
@@ -24,7 +24,7 @@ export const App = () => {
           <ChatMessage key={message.id} message={message} />
         ))}
       </div>
-      <Input />
+      <ChatInput />
     </div>
   );
 };

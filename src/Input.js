@@ -1,21 +1,27 @@
 import React from 'react';
 import {useChat} from './useChat';
 
-export const Input = ({onChange, onEnter}) => {
+export const ChatInput = () => {
   let {state, dispatch} = useChat();
 
   return (
-    <textarea
-      style={{padding: 12}}
+    <Input
       value={state.currentMessage}
       onChange={(e) =>
         dispatch({type: 'setCurrentMessage', message: e.target.value})
       }
-      onKeyUp={(e) =>
-        e.keyCode === 13
-          ? dispatch({type: 'addMessage', message: e.target.value})
-          : null
-      }
+      onEnter={(e) => dispatch({type: 'addMessage', message: e.target.value})}
+    />
+  );
+};
+
+export const Input = ({value, onChange, onEnter}) => {
+  return (
+    <textarea
+      style={{padding: 12}}
+      value={value}
+      onChange={onChange}
+      onKeyUp={(e) => (e.keyCode === 13 ? onEnter(e) : null)}
     />
   );
 };
